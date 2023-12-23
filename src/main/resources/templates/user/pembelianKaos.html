@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="images/favicon.ico" type="image/ico" />
+
+  <title>Dashboard</title>
+
+  <!-- Bootstrap -->
+  <link href="/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <!-- NProgress -->
+  <link href="/vendors/nprogress/nprogress.css" rel="stylesheet">
+  <!-- iCheck -->
+  <link href="/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+
+  <!-- bootstrap-progressbar -->
+  <link href="/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+  <!-- JQVMap -->
+  <link href="/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+  <!-- bootstrap-daterangepicker -->
+  <link href="/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+  <!-- Custom Theme Style -->
+  <link href="/build/css/custom.min.css" rel="stylesheet">
+</head>
+
+<body class="nav-md">
+<div class="container body">
+  <div class="main_container">
+    <div class="col-md-3 left_col">
+      <div class="left_col scroll-view">
+        <div class="navbar nav_title" style="border: 0;">
+          <a th:href="@{/userdashboard}" class="site_title"><i class="fa fa-paw"></i> <span>Campus Del</span></a>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <!-- menu profile quick info -->
+        <div class="profile clearfix">
+          <div class="profile_pic">
+            <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+          </div>
+          <div class="profile_info">
+            <span>Welcome,</span>
+            <h2>John Doe</h2>
+          </div>
+        </div>
+        <!-- /menu profile quick info -->
+
+        <br />
+
+        <!-- sidebar menu -->
+        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+          <div class="menu_section">
+            <h3>General</h3>
+            <ul class="nav side-menu">
+              <li><a th:href="@{/userdashboard}"><i class="fa fa-home"></i> Dashboard </a></li>
+              <li><a th:href="@{/userroom}"><i class="fa fa-bookmark"></i> Booking Ruangan </a></li>
+              <li><a th:href="@{/usersurat}"><i class="fa fa-newspaper-o"></i> Surat Izin </a></li>
+              <li><a th:href="@{/userizin}"><i class="fa fa-calendar"></i> Izin Keluar (IK) </a></li>
+              <li><a th:href="@{/userizinbermalam}"><i class="fa fa-calendar-o"></i> Izin Bermalam (IB) </a></li>
+              <li><a th:href="@{/userpembeliankaos}"><i class="fa fa-shopping-cart"></i> Pembelian Kaos </a></li>
+              <li><a><i class="fa fa-history"></i> Laporan Request <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a th:href="@{/userhistoryroom}">Laporan Booking Ruangan</a></li>
+                  <li><a th:href="@{/userhistorysurat}">Laporan Surat Izin</a></li>
+                  <li><a th:href="@{/userhistoryizinkeluar}">Laporan Izin Keluar (IK)</a></li>
+                  <li><a th:href="@{/userhistoryizinbermalam}">Laporan Izin Bermalam (IB)</a></li>
+                  <li><a th:href="@{/userhistorypembelian}">Laporan Pembelian Kaos</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+        <!-- /sidebar menu -->
+
+        <!-- /menu footer buttons -->
+        <div class="sidebar-footer hidden-small">
+          <a data-toggle="tooltip" data-placement="top" title="Settings">
+            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+          </a>
+          <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+          </a>
+          <a data-toggle="tooltip" data-placement="top" title="Lock">
+            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+          </a>
+          <a data-toggle="tooltip" data-placement="top" title="Logout" th:href="@{/logout}">
+            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+          </a>
+        </div>
+        <!-- /menu footer buttons -->
+      </div>
+    </div>
+
+    <!-- top navigation -->
+    <div class="top_nav">
+      <div class="nav_menu">
+        <div class="nav toggle">
+          <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+        </div>
+        <nav class="nav navbar-nav">
+          <ul class=" navbar-right">
+            <li class="nav-item dropdown open" style="padding-left: 15px;">
+              <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                <img src="/images/img.jpg" alt="">John Doe
+              </a>
+              <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item"  th:href="@{/logout}"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <!-- /top navigation -->
+
+    <!-- page content -->
+    <div class="right_col" role="main">
+
+      <div class="row">
+
+        <div class="col-12">
+          <div class="mb-1">
+            <div class="alert alert-secondary">
+              <h5 style="color: black;">Info:</h5>
+              <p style="color: black;"><strong>Size Baju S:</strong> Rp 90.000</p>
+              <p style="color: black;"><strong>Size Baju M:</strong> Rp 110.000</p>
+              <p style="color: black;"><strong>Size Baju L:</strong> Rp 120.000</p>
+              <p style="color: black;"><strong>Size Baju XL:</strong> Rp 130.000</p>
+              <p style="color: black;"><strong>Size Baju XXL:</strong> Rp 200.000</p>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <form>
+              <div class="form-group">
+                <label for="selectedKaos">Pilih Ukuran:</label>
+                <select class="form-control" id="selectedKaos"></select>
+              </div>
+              <div class="form-group">
+                <label for="paymentAmount">Masukkan Uang:</label>
+                <input type="number" class="form-control" id="paymentAmount" min="0" placeholder="Payment Amount">
+              </div>
+              <button type="button" class="btn btn-primary" onclick="makePurchase()">Bayar</button>
+            </form>
+          </div>
+
+          <div>
+            <h3>Pembayaran</h3>
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Ukuran</th>
+                  <th>Metode Pembayaran</th>
+                  <th>Jumlah Bayar</th>
+                </tr>
+                </thead>
+                <tbody id="purchaseHistoryTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+<!-- /page content -->
+
+<!-- footer content -->
+<footer>
+  <div class="pull-right">
+    Made By <a th:href="@{/dashboard}">Kelompok 4</a>
+  </div>
+  <div class="clearfix"></div>
+</footer>
+<!-- /footer content -->
+</div>
+</div>
+
+<!-- jQuery -->
+<script src="/vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<!-- FastClick -->
+<script src="/vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="/vendors/nprogress/nprogress.js"></script>
+<!-- Chart.js -->
+<script src="/vendors/Chart.js/dist/Chart.min.js"></script>
+<!-- gauge.js -->
+<script src="/vendors/gauge.js/dist/gauge.min.js"></script>
+<!-- bootstrap-progressbar -->
+<script src="/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+<!-- iCheck -->
+<script src="/vendors/iCheck/icheck.min.js"></script>
+<!-- Skycons -->
+<script src="/vendors/skycons/skycons.js"></script>
+<!-- Flot -->
+<script src="/vendors/Flot/jquery.flot.js"></script>
+<script src="/vendors/Flot/jquery.flot.pie.js"></script>
+<script src="/vendors/Flot/jquery.flot.time.js"></script>
+<script src="/vendors/Flot/jquery.flot.stack.js"></script>
+<script src="/vendors/Flot/jquery.flot.resize.js"></script>
+<!-- Flot plugins -->
+<script src="/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+<script src="/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+<script src="/vendors/flot.curvedlines/curvedLines.js"></script>
+<!-- DateJS -->
+<script src="/vendors/DateJS/build/date.js"></script>
+<!-- JQVMap -->
+<script src="/vendors/jqvmap/dist/jquery.vmap.js"></script>
+<script src="/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+<script src="/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+<!-- bootstrap-daterangepicker -->
+<script src="/vendors/moment/min/moment.min.js"></script>
+<script src="/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="/build/js/custom.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.slim.min.js" integrity="sha384-oL1R7MOpx5ZCwhH/1IXWKAqwqAbtuvJMyEVnaBAsjFuCZSmKbSSUnQlmh/jfqlbx" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-qZj+5X+L8O+bbqFC1KRQcNS3R/6iZz5jPbpfIzqZ4QvqIqcMGH0Qg3hGJoM6v56A" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha384-GLhlTQ8i6+rmEPh/jXEIkCtRUq/zFNdFvNSKt67UmbD5GnyIepntpr5S+9tS6kL4" crossorigin="anonymous"></script>
+<script>
+  var idCounter = 1;
+
+  $(document).ready(function () {
+      loadKaosDropdown();
+      getPembelianData();
+  });
+
+  function loadKaosDropdown() {
+      var kaosDropdown = $("#selectedKaos");
+
+      // Clear existing dropdown options
+      kaosDropdown.empty();
+
+      // Add default static options
+      kaosDropdown.append("<option value='default' data-price='0' data-kaos-id='0'>Select Size</option>");
+
+      // Fetch Kaos data from the server
+      $.ajax({
+          type: "GET",
+          url: "/kaos",
+          success: function (data) {
+              // Add dynamic options from the array
+              data.forEach(function (kaos) {
+                  kaosDropdown.append(
+                      "<option value='" + kaos.size + "' data-price='" + kaos.price + "' data-kaos-id='" + kaos.id + "'>" + kaos.size + "</option>"
+                  );
+              });
+          },
+          error: function (error) {
+              console.error('Error fetching Kaos data:', error);
+          }
+      });
+  }
+
+  function makePurchase() {
+      var selectedKaosOption = $("#selectedKaos option:selected");
+      var selectedKaosSize = selectedKaosOption.val();
+      var selectedKaosPrice = parseFloat(selectedKaosOption.data("price"));
+      var selectedKaosId = parseInt(selectedKaosOption.data("kaos-id"));
+      var paymentAmount = $("#paymentAmount").val();
+
+      console.log("Selected Kaos Size:", selectedKaosSize);
+
+      if (selectedKaosSize === null || selectedKaosSize.trim() === "") {
+          alert("Invalid kaos size selection. Purchase failed.");
+          return;
+      }
+
+      if (isNaN(paymentAmount) || parseFloat(paymentAmount) < selectedKaosPrice) {
+          alert("Invalid payment amount. Please enter a valid amount equal to or greater than Rp " + selectedKaosPrice + ". Purchase failed.");
+          return;
+      }
+
+      var allowedPaymentMethods = ['Cash', 'Credit Card', 'Bank', 'Other'];
+      var paymentMethodInput = prompt("Enter payment method (Cash, Credit Card, Bank, Other):");
+
+      var paymentMethod = paymentMethodInput.trim();
+
+      if (!allowedPaymentMethods.includes(paymentMethod)) {
+          alert("Invalid payment method. Please enter a valid payment method.");
+          return;
+      }
+
+      var changeAmount = parseFloat(paymentAmount) - selectedKaosPrice;
+
+      if (changeAmount > 0) {
+          var confirmChangeMessage = "Change Amount: Rp" + changeAmount.toFixed(2) + "\nDo you want to proceed?";
+          var isChangeConfirmed = confirm(confirmChangeMessage);
+
+          if (!isChangeConfirmed) {
+              alert("Change not confirmed. Purchase canceled.");
+              return;
+          }
+      }
+
+      $.ajax({
+          type: "GET",
+          url: "/kaos/" + selectedKaosId,
+          success: function (kaos) {
+              selectedKaosSize = kaos.size;
+              selectedKaosPrice = kaos.price;
+
+              var confirmMessage = "Confirm payment:\n" +
+                  "Size: " + selectedKaosSize + "\n" +
+                  "Amount: Rp" + paymentAmount + "\n" +
+                  "Payment Method: " + paymentMethod;
+
+              var isPaymentConfirmed = confirm(confirmMessage);
+
+              if (!isPaymentConfirmed) {
+                  alert("Payment not confirmed. Purchase canceled.");
+                  return;
+              }
+
+              var purchaseData = {
+                  kaos: { size: selectedKaosSize, price: selectedKaosPrice },
+                  paymentMethod: paymentMethod,
+                  paidAmount: parseFloat(paymentAmount).toFixed(2),
+                  changeAmount: changeAmount.toFixed(2)
+              };
+
+              // Call a function to make the purchase
+              sendPurchaseData(purchaseData);
+          },
+          error: function (error) {
+              console.error('Error fetching Kaos data:', error);
+          }
+      });
+  }
+
+  function sendPurchaseData(purchaseData) {
+      $.ajax({
+          type: "POST",
+          contentType: "application/json",
+          url: "/pembelian/payment",
+          data: JSON.stringify(purchaseData),
+          success: function (response) {
+              alert(response);
+          },
+          error: function (error) {
+              alert("Error making payment: " + error.responseText);
+          }
+      });
+  }
+
+  function getPembelianData() {
+      $.ajax({
+          type: 'GET',
+          url: '/pembelian/list',
+          success: function (response) {
+              var tableBody = $('#purchaseHistoryTableBody');
+              tableBody.empty();
+              response.forEach(function (pembelianKaos) {
+                  $.ajax({
+                      type: "GET",
+                      url: "/kaos/" + pembelianKaos.kaos.id,
+                      success: function (kaos) {
+                          var newRow = '<tr>' +
+                              "<td>" + idCounter++ + '</td>' +
+                              '<td>' + kaos.size + '</td>' +
+                              '<td>' + pembelianKaos.paymentMethod + '</td>' +
+                              '<td>' + pembelianKaos.paidAmount + '</td>' +
+                              '</tr>';
+                          tableBody.append(newRow);
+                      },
+                      error: function (error) {
+                          console.error('Error fetching Kaos data:', error);
+                      }
+                  });
+              });
+          },
+          error: function (error) {
+              console.error('Error getting payment data:', error);
+          }
+      });
+  }
+</script>
+</body>
+</html>
